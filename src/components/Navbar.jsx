@@ -6,16 +6,19 @@ import { AuthContext } from "../context/AuthContext";
 const Navbar = () => {
   const { currentUser } = useContext(AuthContext);
 
+  // Check if currentUser exists and has a displayName
+  const displayName = currentUser && currentUser.displayName ? currentUser.displayName : '';
+
+  // Capitalize only the first letter of the display name
+  const capitalizedDisplayName = displayName.charAt(0).toUpperCase() + displayName.slice(1);
+
   return (
     <div className="navbar">
       <span className="logo">Chat</span>
       <div className="user">
         <img src={currentUser.photoURL} alt="" />
-         <span>
-          {currentUser.displayName[0].toUpperCase() +
-            currentUser.displayName.slice(1)}
-        </span>
-        <button onClick={() => signOut(auth)}>logout</button>
+        <span>{capitalizedDisplayName}</span>
+        <button onClick={() => signOut(auth)}>Logout</button>
       </div>
     </div>
   );
