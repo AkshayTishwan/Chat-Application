@@ -14,17 +14,15 @@ const Login = () => {
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      console.log("Login successful!");
       navigate("/")
     } catch (err) {
-      console.log("Login unsuccessful!");
       setErr(true);
     }
   };
   return (
     <div className="formContainer">
       <div className="formWrapper">
-        <span className="logo">Chat</span>
+        <span className="logo">Lama Chat</span>
         <span className="title">Login</span>
         <form onSubmit={handleSubmit}>
           <input type="email" placeholder="email" />

@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
-import Message from "./Message";
-import { ChatContext } from "../context/ChatContext";
 import { doc, onSnapshot } from "firebase/firestore";
+import React, { useContext, useEffect, useState } from "react";
+import { ChatContext } from "../context/ChatContext";
 import { db } from "../firebase";
+import Message from "./Message";
 
 const Messages = () => {
   const [messages, setMessages] = useState([]);
@@ -17,6 +17,8 @@ const Messages = () => {
       unSub();
     };
   }, [data.chatId]);
+
+  console.log(messages)
 
   return (
     <div className="messages">
